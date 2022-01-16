@@ -17,7 +17,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/hello', function () {
+Route::get('/signup', function () {
     // return view('welcome');
-    return "hello, user";
+    return "hello, user it`s time to sign up";
 });
