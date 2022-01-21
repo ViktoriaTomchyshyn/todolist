@@ -14,10 +14,17 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+
+    return view('authorization');
 });
 
-Route::get('/hello', function () {
-    // return view('welcome');
-    return "hello, user";
+Route::get('/signup', function () {
+    return view('signup');
+});
+
+Route::get('/dashboard', function () {
+    return view('dashboard');
+});
+Route::get('/settings', function () {
+    return view('settings');
 });
