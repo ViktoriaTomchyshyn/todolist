@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\SessionsController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,15 +17,16 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
 
     return view('authorization');
-});
+})->middleware('guest');
 
-Route::get('/signup', function () {
-    return view('signup');
-});
+Route::get('signup', [\App\Http\Controllers\RegisterController::class, 'create'])->middleware('guest');
+Route::post('signup', [\App\Http\Controllers\RegisterController::class, 'store']);
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-});
-Route::get('/settings', function () {
-    return view('settings');
-});
+Route::get('/dashboard', function () {return view('dashboard');});
+
+Route::get('/settings', function () {return view('settings');});
+
+Route::post('logout', [SessionsController::class, 'destroy'])->middleware('auth');
+
+Route::get('login', [SessionsController::class, 'create'])->middleware('guest');
+Route::post('login', [SessionsController::class, 'store'])->middleware('guest');
