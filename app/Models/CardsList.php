@@ -12,14 +12,16 @@ class CardsList extends Model
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function user(){
+    public function user()
+    {
         return $this->belongsTo(User::class);
     }
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
-    public function cards(){
+    public function cards()
+    {
         return $this->hasMany(Card::class);
     }
 
@@ -27,7 +29,8 @@ class CardsList extends Model
      * @param $title
      * @return CardsList|mixed|null
      */
-    static public function find($title){
+    static public function find($title)
+    {
         $lists = CardsList::all();
         foreach ($lists as $list) {
             if($list->title==$title)

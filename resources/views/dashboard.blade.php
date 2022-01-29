@@ -108,7 +108,7 @@
 @endif
 <br><br>
 
-<form style="margin-inline: 5%" style="text-align: left" class="border rounded-xl border-gray-100 bg-gray-300 p-6 rounded-xl'">
+
     @csrf
 
        <div style="text-align: center" class="text-gray-600 mg-top-5 text-xl">
@@ -117,25 +117,33 @@
         <br>
 
     @foreach($CardsLists as $CardsList)
+        <form method="GET" action="/dashboard/{{$CardsList->title}}" style="margin-inline: 5%" style="text-align: left" class="border rounded-xl border-gray-100 bg-gray-300 p-6 rounded-xl'">
             <article>
                 <h1>
-                    <a href = "/dashboard/{{$CardsList->title}}">
-                        <button class=" text-gray-800 bg-gray-200 py-2 px-4 rounded-xl text-m w-full">
+                        <button type="submit" class=" text-gray-800 bg-gray-200 py-2 px-4 rounded-xl text-m w-full">
                             {{$CardsList->title}}
                         </button>
-                    </a>
                 </h1>
-
+                <hr style="color: white">
                 <div style="margin-inline: 5%" class="text-gray-600 mg-top-5 text-sm">
                     {{$CardsList->description}}
                 </div>
+                <hr style="color: white">
+                <form method="POST" action="/lists/{{$CardsList->id}}">
+                    @csrf
+                    @method('EDIT')
+                    <button type="submit" class="close">Edit</button>
+                </form>
+                <form method="POST" action="/lists/{{$CardsList->id}}"  class="close">
+                    @csrf
+                    @method('DELETE')
+                    <button class="px-5 text-red-500 text-xs">Delete</button>
+                </form>
+                <br>
             </article>
-            <br>
-            <hr style="color: white">
-            <br>
+        </form>
 
         @endforeach
-</form>
 <br>
 <div style="margin-inline: 5%">
     <button id="myBtn" style="text-align: center" class="rounded-xl bg-blue-200 px-4 py-3 rounded-xl w-full">

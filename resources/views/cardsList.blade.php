@@ -120,13 +120,18 @@
                     </label>
                 <form method="POST" action="/cards/{{$card->id}}">
                     @csrf
+                    @method('EDIT')
+                    <button type="submit" class="close">Edit</button>
+                </form>
+                <form method="POST" action="/cards/{{$card->id}}"  class="close">
+                    @csrf
                     @method('DELETE')
                     <button class="px-5 text-red-500 text-xs">Delete</button>
                 </form>
             </h1>
             <hr>
             <br>
-            <label style="margin-inline: 5%" style="font-style: oblique" class="text-gray-600 mg-top-5 text-sm">
+            <label style="margin-inline: 5%" class="text-gray-600 mg-top-5 text-sm">
                 {{$card->body}}
             </label>
             <br>

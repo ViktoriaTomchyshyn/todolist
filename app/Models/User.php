@@ -74,14 +74,16 @@ class User extends Authenticatable
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
-    public function cardsLists(){
+    public function cardsLists()
+    {
         return $this->hasMany(CardsList::class);
     }
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
-    public function cards(){
+    public function cards()
+    {
         return $this->hasMany(Card::class);
     }
 
