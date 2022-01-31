@@ -57,3 +57,5 @@ Route::post('/lists', [ListController::class, 'store'])->middleware('auth');
 Route::delete('/cards/{card}', [CardController::class, 'destroy'])->middleware('auth');
 
 Route::delete('/lists/{list}', [ListController::class, 'destroy'])->middleware('auth');
+
+Route::patch('/cards/{card}/edit', [CardController::class, 'edit'])->middleware('auth');

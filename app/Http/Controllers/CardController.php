@@ -37,4 +37,13 @@ class CardController extends Controller
         session()->flash('success', 'Card deleted!');
         return back();
     }
+
+    public function edit(Card $card)
+    {
+        $request = new CreateCardRequest(request());
+        $attributes = $request->attributes();
+        $card->update($attributes);
+        session()->flash('success', 'Card updated!');
+        return back();
+    }
 }
