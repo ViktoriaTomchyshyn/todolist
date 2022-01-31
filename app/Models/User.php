@@ -31,6 +31,10 @@ class User extends Authenticatable
      */
     protected $hidden = [
         'remember_token',
+        'id',
+        'subscription_id',
+        'status',
+        'role'
     ];
 
     /**
@@ -42,25 +46,44 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    //public static function create(array $attributes): User
-    //{
-     //return new User($attributes);
-    //}
-
+    /**
+     * @param $password
+     * @return void
+     */
     public function setPasswordAttribute($password){
         $this->attributes['password'] = bcrypt($password);
     }
 
+    /**
+     * @return bool
+     */
+    public function isAdmin(){
+        if($this->role =='admin')
+           return true;
+        return false;
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
     public function subscription()
     {
         return $this->belongsTo(Subscription::class);
     }
 
-    public function cardsLists(){
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function cardsLists()
+    {
         return $this->hasMany(CardsList::class);
     }
 
-    public function cards(){
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function cards()
+    {
         return $this->hasMany(Card::class);
     }
 

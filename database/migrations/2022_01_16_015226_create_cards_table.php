@@ -15,8 +15,8 @@ class CreateCardsTable extends Migration
     {
         Schema::create('cards', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->unique();
-            $table->foreignId('list_id');
+            $table->foreignId('user_id');
+            $table->foreignId('cards_list_id');
             $table->string('title');
             $table->text('body');
             $table->boolean('priority')->default(false);

@@ -9,16 +9,32 @@ class Card extends Model
 {
     use HasFactory;
 
-    /*protected $fillable = [
+    protected $fillable = [
         'title',
         'body',
-        'priority',
+        'priority'
+    ];
+    protected $hidden = [
+        'id',
+        'user_id',
+        'cards_list_id',
+        'end_till',
         'status'
-    ];*/
-    public function cardsList(){
+    ];
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function cardsList()
+    {
         return $this->belongsTo(CardsList::class);
     }
-    public function user(){
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function user()
+    {
         return $this->belongsTo(User::class);
     }
 

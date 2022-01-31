@@ -24,7 +24,7 @@
 <title>Edit</title>
 
 <body>
-<a href = /dashboard class="fixed bg-gray-200 py-2 px-4 top-3 rounded-xl  text-sm">
+<a href = /dashboard class="fixed bg-gray-200 py-2 px-4 top-3 left-3 rounded-xl  text-sm">
     <button class="btn" type="submit"><label style="font-size:16px">Homepage</label></button>
 </a>
 <form method = "POST" action="/logout" class="fixed bg-gray-200 py-2 px-4 top-3 rounded-xl right-3 text-sm">
@@ -74,7 +74,7 @@
     <input type="password" class="border border-gray-200 p-2 rounded-xl w-full"
            name="password"
            id="password"
-           value="{{auth()->user()->password}}" required>
+           value="" required>
     <br>
     <input type="checkbox" onclick="myFunction()">
     <label for="password" style="font-size:12px">Show Password</label>
